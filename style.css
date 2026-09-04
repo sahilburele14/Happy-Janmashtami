@@ -1,0 +1,462 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+/* Video Background */
+
+#screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+  border: 0;
+  outline: 0;
+  z-index: 1;
+
+  pointer-events: none;
+  user-select: none;
+
+
+}
+
+/* Welcome Screen */
+
+#welcomeScreen {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 10;
+  transition: opacity 0.8s ease;
+
+
+}
+
+/* Welcome Content */
+
+.welcome-content {
+  width: min(600px, 85%);
+  padding: 40px 30px;
+  color: white;
+
+
+}
+
+/* Peacock Feather */
+
+.peacock-feather {
+  font-size: 55px;
+  margin-bottom: 15px;
+  animation: float 2s ease-in-out infinite;
+
+}
+
+/* Heading */
+
+.welcome-content h1 {
+  margin: 0 0 20px;
+  font-size: clamp(40px, 7vw, 75px);
+  font-weight: 700;
+
+
+}
+
+/* Description */
+
+.welcome-content p {
+  margin: 0 auto 30px;
+  max-width: 600px;
+  font-size: 18px;
+  line-height: 1.7;
+
+
+}
+
+/* Enter Button */
+
+#startBtn {
+  padding: 14px 32px;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: #222;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+
+}
+
+#startBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.35);
+
+
+}
+
+#startBtn:active {
+  transform: scale(0.96);
+}
+
+.sound-btn {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    z-index: 20;
+
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(8px);
+
+    transition: all 0.3s ease;
+}
+
+
+.sound-btn:hover {
+    transform: translateY(-3px);
+
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Celebration Particles */
+
+#particles {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 15;
+}
+
+
+.particle {
+    position: absolute;
+
+    top: -50px;
+
+    font-size: 25px;
+
+    pointer-events: none;
+
+    animation: falling linear forwards;
+
+    user-select: none;
+}
+
+
+@keyframes falling {
+
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+
+}
+
+/* ================================
+   COUNTDOWN
+================================ */
+
+#countdown {
+    display : none;
+    
+    position: fixed;
+
+    left: 50%;
+    bottom: 80px;
+
+    transform: translateX(-50%);
+
+    z-index: 16;
+
+    width: min(700px, 90%);
+
+    text-align: center;
+
+    color: white;
+
+    transition: opacity 0.5s ease;
+}
+
+
+#countdown h2 {
+    margin-bottom: 20px;
+
+    font-size: 22px;
+
+    font-weight: 500;
+
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+
+/* Timer boxes */
+
+.timer {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+}
+
+
+.time-box {
+    min-width: 90px;
+
+    padding: 12px 10px;
+
+    border-radius: 12px;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    backdrop-filter: blur(8px);
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+
+.time-box span {
+    display: block;
+
+    font-size: 32px;
+
+    font-weight: 700;
+}
+
+
+.time-box small {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+}
+
+
+/* ================================
+   CELEBRATION MESSAGE
+================================ */
+
+#celebrationMessage {
+    position: fixed;
+
+    left: 50%;
+    bottom: 80px;
+
+    transform: translateX(-50%) scale(0.8);
+
+    z-index: 17;
+
+    width: min(460px, 85%);
+
+    padding: 18px 20px;
+
+    text-align: center;
+
+    color: white;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    background: rgba(0, 0, 0, 0.13);
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+
+#celebrationMessage.show {
+    opacity: 1;
+
+    transform: translateX(-50%) scale(1);
+}
+
+
+.celebration-icon {
+    font-size: 28px;
+
+    margin-bottom: 8px;
+}
+
+
+#celebrationMessage h2 {
+    margin: 0 0 7px;
+
+    font-size: 25px;
+}
+
+
+#celebrationMessage p {
+    margin: 0 0 10px;
+
+    font-size: 15px;
+}
+
+
+.celebration-lamps {
+    font-size: 23px;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+    #countdown {
+        bottom: 75px;
+    }
+
+
+    #countdown h2 {
+        font-size: 17px;
+    }
+
+
+    .timer {
+        gap: 7px;
+    }
+
+
+    .time-box {
+        min-width: 60px;
+
+        padding: 10px 5px;
+    }
+
+
+    .time-box span {
+        font-size: 22px;
+    }
+
+
+    .time-box small {
+        font-size: 9px;
+    }
+
+
+    #celebrationMessage {
+        bottom: 75px;
+
+        padding: 20px;
+    }
+
+
+    #celebrationMessage h2 {
+        font-size: 23px;
+    }
+
+}
+
+/* Hide Welcome Screen */
+
+#welcomeScreen.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Peacock Feather Animation */
+
+@keyframes float {
+
+
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+
+
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 768px) {
+
+
+  .welcome-content {
+    width: 85%;
+    padding: 25px 15px;
+  }
+
+  .welcome-content h1 {
+    font-size: 40px;
+  }
+
+  .welcome-content p {
+    font-size: 16px;
+  }
+
+  #startBtn {
+    padding: 13px 26px;
+    font-size: 16px;
+  }
+
+
+}
